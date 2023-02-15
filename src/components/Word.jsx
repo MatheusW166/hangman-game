@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const WordButton = styled.button(({ disabled, theme }) => ({
+const WordStyle = styled.button(({ disabled, theme }) => ({
   width: "40px",
   height: "40px",
   borderRadius: "3px",
@@ -21,8 +21,8 @@ const WordButton = styled.button(({ disabled, theme }) => ({
 export default function Word({ children, onClick, disabled = true }) {
   if (typeof children !== "string") return "";
   return (
-    <WordButton disabled={disabled} onClick={onClick}>
+    <WordStyle disabled={disabled} onClick={onClick}>
       {children.toUpperCase()}
-    </WordButton>
+    </WordStyle>
   );
 }
