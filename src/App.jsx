@@ -9,7 +9,7 @@ const AppStyle = styled.div(({ theme }) => ({
   minHeight: "100vh",
   maxWidth: "1025px",
   margin: "0 auto",
-  padding: "60px 40px",
+  padding: "40px 24px",
   display: "flex",
   justifyContent: "center",
 }));
