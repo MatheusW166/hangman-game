@@ -19,7 +19,6 @@ const WordStyle = styled.button(({ disabled, theme }) => ({
 }));
 
 export default function Word({ children, onClick, disabled = true }) {
-  if (typeof children !== "string") return "";
   return (
     <WordStyle disabled={disabled} onClick={onClick}>
       {children.toUpperCase()}
