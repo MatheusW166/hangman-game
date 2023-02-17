@@ -48,12 +48,17 @@ export default function Guess({ onSubmit, disabled = true }) {
       }}>
       <GuessPtagStyle>Já sei a palavra!</GuessPtagStyle>
       <GuessInputStyle
+        data-test="guess-input"
         name="guess-input"
         type="text"
         placeholder="Dê seu chute..."
         disabled={disabled}
       />
-      <Letter width="100px" type="submit" disabled={disabled}>
+      <Letter
+        dataTest="guess-button"
+        width="100px"
+        type="submit"
+        disabled={disabled}>
         Chutar
       </Letter>
     </GuessFormStyle>

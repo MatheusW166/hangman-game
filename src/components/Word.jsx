@@ -26,7 +26,7 @@ export default function Word({
 
   if (!endGame) {
     return (
-      <WordStyle>
+      <WordStyle data-test="word">
         {word
           .split("")
           .map((letter) =>
@@ -38,8 +38,16 @@ export default function Word({
   }
 
   if (isWinner) {
-    return <WordStyle winner>{word.split("").join(" ")}</WordStyle>;
+    return (
+      <WordStyle data-test="word" winner>
+        {word.split("").join(" ")}
+      </WordStyle>
+    );
   }
 
-  return <WordStyle loser>{word.split("").join(" ")}</WordStyle>;
+  return (
+    <WordStyle data-test="word" loser>
+      {word.split("").join(" ")}
+    </WordStyle>
+  );
 }

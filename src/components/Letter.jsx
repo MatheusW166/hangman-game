@@ -28,9 +28,11 @@ export default function Letter({
   width,
   height,
   type,
+  dataTest = "letter",
 }) {
   return (
     <LetterStyle
+      data-test={dataTest}
       width={width}
       height={height}
       type={type}

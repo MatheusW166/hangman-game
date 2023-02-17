@@ -20,5 +20,9 @@ const PickWordStyle = styled.button(({ theme }) => ({
 }));
 
 export default function PickWordBtn({ children, onClick }) {
-  return <PickWordStyle onClick={onClick}>{children}</PickWordStyle>;
+  return (
+    <PickWordStyle data-test="choose-word" onClick={onClick}>
+      {children}
+    </PickWordStyle>
+  );
 }

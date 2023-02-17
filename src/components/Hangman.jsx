@@ -14,5 +14,5 @@ const HangmanStyle = styled.img((_) => ({
 export default function Hangman({ errorCount = 0 }) {
   const images = [Forca0, Forca1, Forca2, Forca3, Forca4, Forca5, Forca6];
   const image = images[errorCount] || Forca6;
-  return <HangmanStyle src={image} alt={image} />;
+  return <HangmanStyle data-test="game-image" src={image} alt={image} />;
 }
