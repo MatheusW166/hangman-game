@@ -6,6 +6,7 @@ import Word from "./Word";
 import palavras, { alfabeto } from "../palavras";
 import { useState } from "react";
 import {} from "../helpers/string.extensions";
+import Guess from "./Guess";
 
 const GameStyle = styled.div((_) => ({
   width: "100%",
@@ -55,7 +56,7 @@ export default function Game() {
   }
 
   const hitsCount = () => {
-    if (!word) return 0;
+    if (!word) return -1;
     const wordBase = word.getStringBase();
     let hitsCount = 0;
     Object.keys(lettersPicked).forEach(
@@ -96,6 +97,7 @@ export default function Game() {
         onClick={pickLetter}
         isGameRunning={word !== undefined && !endGame()}
       />
+      <Guess />
     </GameStyle>
   );
 }
