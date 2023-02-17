@@ -33,10 +33,12 @@ export default function Game() {
   const [errorsCount, setErrorsCount] = useState(0);
   const [lettersPicked, setLettersPicked] = useState({});
   const [word, setWord] = useState(undefined);
+  const [guess, setGuess] = useState(undefined);
 
   function resetGame() {
     setLettersPicked({});
     setErrorsCount(0);
+    setGuess(undefined);
   }
 
   function pickWord() {
@@ -65,8 +67,12 @@ export default function Game() {
     return hitsCount;
   };
 
+  const hitTheWord = () => hitsCount() === word?.length;
+  const hitTheGuess = (guess) => guess && guess?.isEqual(word);
+
   const isLoser = () => errorsCount === 6;
-  const isWinner = () => !isLoser() && hitsCount() === word?.length;
+  const isWinner = () => !!(!isLoser() && (hitTheWord() || hitTheGuess(guess)));
+
   const endGame = () => isLoser() || isWinner();
 
   function pickLetter(letter) {
@@ -74,6 +80,14 @@ export default function Game() {
     newObj[letter] = true;
     setLettersPicked(newObj);
     handleError(letter);
+  }
+
+  function handleGuess(input, value) {
+    setGuess(value);
+    input.value = "";
+    if (!hitTheGuess(value)) {
+      setErrorsCount(6);
+    }
   }
 
   return (
@@ -97,7 +111,10 @@ export default function Game() {
         onClick={pickLetter}
         isGameRunning={word !== undefined && !endGame()}
       />
-      <Guess />
+      <Guess
+        onSubmit={handleGuess}
+        disabled={word === undefined || endGame()}
+      />
     </GameStyle>
   );
 }

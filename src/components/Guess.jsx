@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import Letter from "./Letter";
 
-const GuessFormStyle = styled.form((_) => ({
+const GuessFormStyle = styled.form(({ disabled }) => ({
   width: "100%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   gap: "16px",
+  opacity: disabled && "0.35",
 }));
 
 const GuessPtagStyle = styled.p(({ theme }) => ({
@@ -29,16 +30,20 @@ const GuessInputStyle = styled.input(({ theme }) => ({
     color: theme.textPrimary,
     opacity: "0.35",
   },
+  ":disabled": {
+    boxShadow: "none",
+  },
 }));
 
-export default function Guess({ onSubmit }) {
+export default function Guess({ onSubmit, disabled = true }) {
   return (
     <GuessFormStyle
+      disabled={disabled}
       onSubmit={(e) => {
         e.preventDefault();
-        const inputValue = e.target["guess-input"].value;
+        const input = e.target["guess-input"];
         if (onSubmit) {
-          onSubmit(inputValue);
+          onSubmit(input, input.value);
         }
       }}>
       <GuessPtagStyle>Já sei a palavra!</GuessPtagStyle>
@@ -46,8 +51,9 @@ export default function Guess({ onSubmit }) {
         name="guess-input"
         type="text"
         placeholder="Dê seu chute..."
+        disabled={disabled}
       />
-      <Letter width="100px" type="submit" disabled={false}>
+      <Letter width="100px" type="submit" disabled={disabled}>
         Chutar
       </Letter>
     </GuessFormStyle>

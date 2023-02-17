@@ -32,4 +32,10 @@ Object.assign(String.prototype, {
   },
 });
 
+Object.assign(String.prototype, {
+  isEqual(str) {
+    return this.getStringBase() === str.getStringBase();
+  },
+});
+
 export {};
