@@ -83,6 +83,9 @@ export default function Game() {
   }
 
   function handleGuess(input, value) {
+    if (!value?.trim()) {
+      return;
+    }
     setGuess(value);
     input.value = "";
     if (!hitTheGuess(value)) {
