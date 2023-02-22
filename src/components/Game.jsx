@@ -42,7 +42,7 @@ export default function Game() {
   const [lettersPicked, setLettersPicked] = useState({});
   const [word, setWord] = useState("");
   const [guess, setGuess] = useState("");
-
+  console.log(word);
   function resetGame() {
     setLettersPicked({});
     setErrorsCount(0);

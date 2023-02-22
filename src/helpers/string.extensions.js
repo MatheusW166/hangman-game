@@ -1,6 +1,10 @@
 Object.assign(String.prototype, {
   getLetterBase() {
-    const lower = this.toLowerCase();
+    const noSpace = this.trim();
+    if (!noSpace) {
+      return "";
+    }
+    const lower = noSpace.toLowerCase();
     const charVariations = [
       "aáàãäâ",
       "eéèëê",
@@ -20,7 +24,12 @@ Object.assign(String.prototype, {
 
 Object.assign(String.prototype, {
   getStringBase() {
-    return this.split("")
+    const noSpace = this.trim();
+    if (!noSpace) {
+      return "";
+    }
+    return noSpace
+      .split("")
       .map((c) => c.getLetterBase())
       .join("");
   },
