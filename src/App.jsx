@@ -1,7 +1,4 @@
-import styled, { ThemeProvider } from "styled-components";
-import GlobalStyles from "./global/globalStyles";
-import ResetStyles from "./global/resetStyles";
-import theme from "./theme/themes";
+import styled from "styled-components";
 import Game from "./components/Game";
 
 const AppStyle = styled.div(({ theme }) => ({
@@ -16,13 +13,9 @@ const AppStyle = styled.div(({ theme }) => ({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <ResetStyles />
-      <GlobalStyles />
-      <AppStyle>
-        <Game />
-      </AppStyle>
-    </ThemeProvider>
+    <AppStyle>
+      <Game />
+    </AppStyle>
   );
 }
 
