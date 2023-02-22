@@ -8,6 +8,7 @@ const GuessFormStyle = styled.form(({ disabled }) => ({
   alignItems: "center",
   gap: "16px",
   opacity: disabled && "0.35",
+  flexWrap: "wrap",
 }));
 
 const GuessPtagStyle = styled.p(({ theme }) => ({

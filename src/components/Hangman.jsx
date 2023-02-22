@@ -8,7 +8,7 @@ import Forca5 from "../assets/forca5.png";
 import Forca6 from "../assets/forca6.png";
 
 const HangmanStyle = styled.img((_) => ({
-  width: "min(400px, calc(100% - 220px))",
+  width: "max(300px, min(calc(100% - 220px), 400px))",
 }));
 
 export default function Hangman({ errorCount = 0 }) {
